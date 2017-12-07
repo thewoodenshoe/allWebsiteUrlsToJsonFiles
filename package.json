@@ -1,0 +1,14 @@
+{
+  "name": "scrape",
+  "version": "0.0.1",
+  "description": "Scrape le web.",
+  "main": "server.js",
+  "author": "Scotch",
+  "dependencies": {
+    "cheerio": "latest",
+    "ejs": "^2.5.7",
+    "express": "latest",
+    "request": "latest",
+    "tableify": "^1.1.0"
+  }
+}
