@@ -19,12 +19,15 @@ app.get('/', function(req, res) {
 
 app.post('/step1', function(req, res){
    request(url, function(error, response, html){
-      if(!error){
+      if(error){
+         console.log(error)
+         res.end(error)
+     } else {
          var $ = cheerio.load(html)
          $('li','ul').each(function(i, element){
             let data = $(this)
             let text = data.children().text()
-            let href = "www.fordservicecontent.com" +data.children().attr('href')
+            let href = "http://www.fordservicecontent.com" +data.children().attr('href')
             parsedResults.push({ 'nr': i, 'link name': text, 'url': href })
          })
          let tmp = JSON.stringify(parsedResults)
@@ -36,11 +39,19 @@ app.post('/step1', function(req, res){
 })
 
 app.post('/step2', function(req, res){
+  var i = 0
   parsedResults.forEach(function(value){
+     i += 1
      request(value.url, function(error, response, html) {
-        if(!error){
-           
-        } 
+        if(error){
+           console.log(error)
+           res.end(error)
+        } else {
+          var $ = cheerio.load(html)
+          fs.writeFile('./tmp/'+i+'.html',html,function(err){
+             console.log(`File ${i} was written succesfully to ./tmp/${i}.html`)
+          })
+        }
      })
   })
   res.end()
