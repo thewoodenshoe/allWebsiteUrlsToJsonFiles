@@ -11,15 +11,21 @@
     <div class="container">
       <fieldset>
           <a href="http://153.9.5.202:3000"> main page </a>
+          <form action="/" method="post">
+             <input type="submit" value="Main page">
+          </form>
           <form action="/step1" method="post">
-             <input id="frmTag1" name="frmTag1" type="text" placeholder="search for html tag">
-             <input id="frmTag2" name="frmTag2" type="text" placeholder="search for second html tag">
-             <input id="frmUrl" name="frmUrl" type="text" size="30" placeholder="your url here">
-             <input type="submit" value="step 1, fetch all urls">
+             <input type="submit" value="Step 1, load HTML page">
+             <input id="frmUrl" name="frmUrl" type="text" placeholder="Place your url here">
           </form>
           <form action="/step2" method="post">
-             <input id="frmUrl" name="frmUrl" type="text" size="70" placeholder="your url here">
-             <input type="submit" value="step 2, download urls and create file">
+             <input type="submit" value="Step 2, fetch URL from page">
+             <input id="frmTag1" name="frmTag1" type="text" placeholder="default LI">
+             <input id="frmTag2" name="frmTag2" type="text" placeholder="default UL">
+             <input id="frmTag3" name="frmTag3" type="text" placeholder="domain (ie. http://www.x.com)">
+          </form>
+          <form action="/step3" method="post">
+             <input type="submit" value="Step 3, transform URL into JSON files">
           </form>
       </fieldset>
     </div>
